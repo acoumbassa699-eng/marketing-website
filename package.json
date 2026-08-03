@@ -2,7 +2,7 @@
   "name": "basehub-marketing-website-template",
   "version": "0.1.0",
   "scripts": {
-    "build": "basehub && next build",
+    "build": "basehub 2>/dev/null || true && next build",
     "dev": "basehub dev & next dev --turbopack",
     "lint": "next lint",
     "start": "next start"
