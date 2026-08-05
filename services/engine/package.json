@@ -1,0 +1,1 @@
+{"name":"@optimus/engine","version":"0.1.0","private":true,"type":"module","scripts":{"dev":"tsx src/worker.ts","build":"tsc --noEmit","start":"node src/worker.ts","lint":"tsc --noEmit","typecheck":"tsc --noEmit"},"dependencies":{"@optimus/types":"workspace:*"},"devDependencies":{"@optimus/config":"workspace:*","@types/node":"^22","tsx":"^4.20.3","typescript":"^5.8.3"}}
