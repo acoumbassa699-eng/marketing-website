@@ -21,6 +21,7 @@ import FeatureHero, { featureHeroFragment } from "../_sections/features/features
 import { PageView } from "../../components/page-view";
 import { FreeformText, freeformTextFragment } from "../_sections/freeform-text";
 import { Form, formFragment } from "../_sections/form";
+import { OptimusHome } from "../_sections/optimus-home";
 import {
   settingsLogoLiteFragment,
   SettingsLogoLiteFragment,
@@ -52,6 +53,13 @@ export const generateMetadata = async ({
   params: Promise<{ slug?: string[] }>;
 }): Promise<Metadata | undefined> => {
   const params = await _params;
+  if (!params.slug?.length) {
+    return {
+      title: "Optimus Platform",
+      description: "Plateforme de développement cloud Optimus.",
+    };
+  }
+
   const data = await basehub().query({
     site: {
       settings: { metadata: { defaultTitle: true, titleTemplate: true, defaultDescription: true } },
@@ -122,9 +130,11 @@ function SectionsUnion({
       case "PricingComponent":
         return <Pricing {...comp} key={comp._id} />;
       case "FaqComponent":
-        return <Faq {...comp} key={comp._id} />;
-      case "FaqComponent":
-        return <AccordionFaq {...comp} key={comp._id} eventsKey={eventsKey} />;
+        return comp.layout === "accordion" ? (
+          <AccordionFaq {...comp} key={comp._id} eventsKey={eventsKey} />
+        ) : (
+          <Faq {...comp} key={comp._id} />
+        );
       case "PricingTableComponent":
         return <PricingTable {...comp} key={comp._id} />;
       case "FeatureHeroComponent":
@@ -172,6 +182,10 @@ export default async function DynamicPage({
 }) {
   const params = await _params;
   const slugs = params.slug;
+
+  if (!slugs?.length) {
+    return <OptimusHome />;
+  }
 
   const {
     site: { pages, generalEvents, settings },

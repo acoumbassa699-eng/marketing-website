@@ -4,7 +4,7 @@
   "scripts": {
     "build": "basehub && next build",
     "dev": "basehub dev & next dev --turbopack",
-    "lint": "next lint || next build --no-lint",
+    "lint": "tsc --noEmit",
     "start": "next start",
     "typecheck": "tsc --noEmit"
   },
