@@ -2,7 +2,8 @@
   "name": "@optimus/web",
   "version": "0.1.0",
   "scripts": {
-    "build": "basehub && next build",
+    "build": "next build",
+    "generate": "basehub",
     "dev": "basehub dev & next dev --turbopack",
     "lint": "tsc --noEmit",
     "start": "next start",
