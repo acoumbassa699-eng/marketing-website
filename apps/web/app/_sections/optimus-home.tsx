@@ -23,7 +23,7 @@ export function OptimusHome() {
             <a className="rounded-full bg-[--accent-9] px-6 py-3 text-center font-semibold text-white shadow-lg shadow-orange-500/20" href={platformUrl}>
               Découvrir la plateforme
             </a>
-            <a className="rounded-full border border-[--border-primary] px-6 py-3 text-center font-semibold dark:border-[--dark-border-primary]" href={`${platformUrl}/login`}>
+            <a className="rounded-full border border-[--border] px-6 py-3 text-center font-semibold dark:border-[--dark-border]" href={`${platformUrl}/login`}>
               Connexion Optimus
             </a>
           </div>

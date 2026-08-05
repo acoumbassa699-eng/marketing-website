@@ -216,7 +216,7 @@ export default async function DynamicPage({
 
   const page = pages.items[0];
 
-  if (!page) notFound();
+  if (!page) return notFound();
 
   const sections = page.sections;
 

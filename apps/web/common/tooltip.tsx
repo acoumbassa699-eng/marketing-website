@@ -52,11 +52,11 @@ function Arrow() {
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        className="fill-surface-secondary dark:fill-dark-surface-secondary dark:stroke-dark-border stroke-border"
+        className="fill-[--surface-secondary] dark:fill-[--dark-surface-secondary] dark:stroke-[--dark-border] stroke-[--border]"
         d="M6.76649 7.55043C6.41506 8.12151 5.58494 8.12151 5.23351 7.55043L0.894781 0.500001L11.1052 0.5L6.76649 7.55043Z"
       />
       <path
-        className="fill-surface-secondary dark:fill-dark-surface-secondary"
+        className="fill-[--surface-secondary] dark:fill-[--dark-surface-secondary]"
         d="M1.3418 0H10.7666L10.1989 1H1.80013L1.3418 0Z"
       />
     </svg>

@@ -27,7 +27,7 @@ export function Newsletter({ newsletter }: { newsletter: NewsletterFragment }) {
       <div className="container mx-auto flex flex-col gap-4 px-6 lg:flex-row lg:justify-between">
         <div className="flex flex-1 flex-col items-start gap-1">
           <h5 className="text-xl font-medium lg:text-2xl">{newsletter.title}</h5>
-          <p className="text text-[--text-tertiary] dark:text-[--dark-text-tertiary] lg:text-lg">
+          <p className="text-[--text-tertiary] dark:text-[--dark-text-tertiary] lg:text-lg">
             {newsletter.description}
           </p>
         </div>
