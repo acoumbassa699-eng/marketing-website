@@ -1,0 +1,4 @@
+
+> @optimus/platform@0.1.0 typecheck /workspace/project/marketing-website/apps/platform
+> tsc --noEmit
+

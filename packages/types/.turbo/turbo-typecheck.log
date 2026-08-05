@@ -1,0 +1,4 @@
+
+> @optimus/types@0.1.0 typecheck /workspace/project/marketing-website/packages/types
+> tsc --noEmit
+

@@ -1,4 +1,4 @@
-import { newsletterFragment } from "@/app/_sections/newsletter";
+import { newsletterFragment } from "../../app/_sections/newsletter";
 import { fragmentOn } from "basehub";
 
 /* -------------------------------------------------------------------------- */

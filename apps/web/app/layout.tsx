@@ -9,8 +9,8 @@ import { footerFragment, headerFragment } from "../lib/basehub/fragments"
 import { Newsletter } from "./_sections/newsletter"
 import { themeFragment } from "../context/basehub-theme-provider"
 import { PlaygroundSetupModal } from "../components/playground-notification"
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
+import { Header } from "../components/header"
+import { Footer } from "../components/footer"
 
 const geist = Geist({
   subsets: ["latin"],

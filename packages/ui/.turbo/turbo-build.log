@@ -1,0 +1,4 @@
+
+> @optimus/ui@0.1.0 build /workspace/project/marketing-website/packages/ui
+> tsc --noEmit
+
