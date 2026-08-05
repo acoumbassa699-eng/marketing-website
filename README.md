@@ -1,45 +1,69 @@
-![Open Graph, Homepage (2) (1)](https://github.com/basehub-ai/marketing-website-template/assets/40034115/e8566293-9c58-4467-a4c7-7a700eea10c8)
+# Optimus Monorepo
 
-[BaseHub Templates](https://basehub.com/templates) are production-ready website templates, powered by BaseHub.
+Optimus Platform est désormais organisé comme un monorepo professionnel pour séparer le site marketing, la future interface de développement cloud, l'API et le moteur d'exécution.
 
-# Marketing Website Template
+## Architecture
 
-[![Use template](https://basehub.com/template-button.svg)](https://basehub.com/basehub/marketing-website)
+```txt
+apps/
+  web/        Site marketing existant
+  platform/   Interface plateforme de développement cloud, login Optimus compatible Coder
+services/
+  api/        Backend API déployé sur VPS
+  engine/     Workers et logique d'exécution déployés sur VPS uniquement
+packages/
+  ui/         Composants React partagés
+  config/     Configuration TypeScript commune
+  types/      Types métier partagés
+```
 
-Fully featured marketing website.
+## Authentification Optimus compatible Coder
 
-- 🔸 Perfect for startups and indie hackers looking to showcase their SaaS
-- 🔸 Fully editable from BaseHub
-- 🔸 Comes with Search, Dark/Light Mode, Analytics, and more
-- 🔸 Requires just a BaseHub account and a deployment platform—no other service
+Le login affiché par `apps/platform` est rebrandé Optimus tout en conservant les endpoints Coder documentés: `POST /api/v2/users/login`, GitHub OAuth et OIDC. Le détail de l'audit est disponible dans `docs/auth-audit.md`.
 
-## Stack
+Flux prévu:
 
-- Next.js
-- BaseHub
-- Tailwind CSS
+```txt
+Frontend Vercel → services/api sur VPS → services/engine sur VPS
+```
 
-## One Click Deployment
+Le moteur ne doit jamais être inclus dans un déploiement Vercel.
 
-[![Deploy with Vercel](https://vercel.com/button)]([](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fbasehub-ai%2Fmarketing-website-template&integration-ids=oac_xwgyJe0UwFLtsKIvIScYh0rY&env=&demo-url=https%3A%2F%2Fnextjs-marketing-website.basehub.com%2F&demo-description=Introducing%20the%20%E2%80%9CCMS%20Marketing%20Website%20Template%E2%80%9D%20by%20BaseHub%E2%80%94a%20sleek%2C%20modern%2C%20and%20fully%20responsive%20solution%20for%20your%20marketing%20needs.%20This%20template%20is%20designed%20to%20empower%20businesses%20with%20an%20intuitive%2C%20easy-to-navigate%20interface%20that%20seamlessly%20integrates%20with%20any%20CMS%20platform.%0A%0AKey%20Features%3A%0A%0A%09%E2%80%A2%09Responsive%20Design%3A%20Ensures%20optimal%20viewing%20experience%20across%20all%20devices%2C%20from%20desktops%20to%20smartphones.%0A%09%E2%80%A2%09Customizable%20Layouts%3A%20Offers%20flexible%20and%20dynamic%20layout%20options%20to%20suit%20various%20content%20needs%20and%20styles.%0A%09%E2%80%A2%09SEO%20Friendly%3A%20Built%20with%20SEO%20best%20practices%20in%20mind%20to%20improve%20your%20search%20engine%20rankings%20and%20drive%20organic%20traffic.%0A%09%E2%80%A2%09Blog%20and%20Changelog%3A%20Blog%20and%20changelog%20integrated%20to%20have%20a%20nice%20experience.%0A%09%E2%80%A2%09Integrated%20Analytics%3A%20Easy%20integration%20with%20popular%20analytics%20tools%20to%20track%20and%20analyze%20website%20performance.%0A%09%E2%80%A2%09Social%20Media%20Integration%3A%20Connect%20and%20engage%20with%20your%20audience%20through%20seamless%20social%20media%20integration.%0A%09%E2%80%A2%09Text%20based%20Search%3A%20Out%20of%20the%20box%20integrated%20search%20with%20BaseHub%0A%0AWhether%20you%20are%20launching%20a%20new%20product%2C%20promoting%20a%20service%2C%20or%20building%20brand%20awareness%2C%20the%20%E2%80%9CCMS%20Marketing%20Website%20Template%22%20will%20fits%20perfectly.&demo-image=https%3A%2F%2Fbasehub.earth%2Ffa068a12%2FuK8Uaibmc32TOGypkLvBu%2Freadme-(2).png&external-id=mly6i259eym3jkyvq6txyciu%3AViwfZNGQgCUccNVudPIns))
+## Commandes
 
-_You can deploy this anywhere. Vercel works nicely and with one click._
-
-## Local Development
-
-**Install dependencies**
-\`\`\`bash
-pnpm i
-\`\`\`
-
-**Add your BASEHUB_TOKEN to `.env.local`**
-\`\`\`txt
-# .env.local
-
-BASEHUB_TOKEN="<get-it-from-your-basehub-repo>"
-\`\`\`
-
-**Start the dev server**
-\`\`\`bash
+```bash
+pnpm install
 pnpm dev
-\`\`\`
+pnpm build
+pnpm typecheck
+pnpm lint
+```
+
+Commandes ciblées:
+
+```bash
+pnpm --filter @optimus/web dev
+pnpm --filter @optimus/platform dev
+pnpm --filter @optimus/api dev
+pnpm --filter @optimus/engine dev
+```
+
+## Variables d'environnement
+
+`apps/web` conserve `BASEHUB_TOKEN`. Le login produit est porté par `apps/platform` et doit être connecté au backend Coder via `/api/v2/*`:
+
+```txt
+BASEHUB_TOKEN=
+CODER_ACCESS_URL=
+```
+
+`services/api` peut pointer vers le moteur:
+
+```txt
+OPTIMUS_ENGINE_URL=http://localhost:4100
+```
+
+## Déploiement cible
+
+- Vercel: `apps/web`, `apps/platform`
+- VPS: `services/api`, `services/engine`
