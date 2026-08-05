@@ -1,7 +1,7 @@
 import { ButtonLink } from "@/common/button";
 import { DarkLightImageAutoscale } from "@/common/dark-light-image";
 import { DesktopMenu, MobileMenu } from "./navigation-menu";
-import { DarkLightImageFragment, HeaderFragment } from "@/lib/basehub/fragments";
+import { DarkLightImageFragment, HeaderFragment, HeaderLinksFragment } from "@/lib/basehub/fragments";
 
 export const Header = ({
   logo,

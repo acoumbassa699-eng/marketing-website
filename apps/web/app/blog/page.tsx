@@ -70,7 +70,7 @@ export default async function BlogPage() {
   const { posts } = blog;
 
   if (posts.items.length === 0) {
-    notFound();
+    return notFound();
   }
 
   return (

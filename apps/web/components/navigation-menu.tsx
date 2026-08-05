@@ -13,7 +13,7 @@ import {
   type NavigationMenuLinkProps,
 } from "@radix-ui/react-navigation-menu";
 import { $button, ButtonLink } from "../common/button";
-import type { HeaderFragment, HeaderLiksFragment } from "../lib/basehub/fragments";
+import type { HeaderFragment, HeaderLinksFragment } from "../lib/basehub/fragments";
 import { useToggleState } from "../hooks/use-toggle-state";
 import { useHasRendered } from "../hooks/use-has-rendered";
 
@@ -69,7 +69,7 @@ function NavigationMenuLink({
   );
 }
 
-function NavigationMenuLinkWithMenu({ _title, href, sublinks }: HeaderLiksFragment) {
+function NavigationMenuLinkWithMenu({ _title, href, sublinks }: HeaderLinksFragment) {
   const [closeOnClick, setCloseOnClick] = React.useState(false);
   const timeoutRef = React.useRef<number | null>(null);
 
@@ -227,7 +227,7 @@ function ItemWithSublinks({
 }: {
   _id: string;
   _title: string;
-  sublinks: HeaderLiksFragment["sublinks"]["items"];
+  sublinks: HeaderLinksFragment["sublinks"]["items"];
   onClick: () => void;
 }) {
   const { isOn, handleOff, handleOn } = useToggleState(false);

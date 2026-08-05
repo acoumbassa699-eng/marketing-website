@@ -3,7 +3,7 @@ import { ButtonLink } from "@/common/button";
 import { DarkLightImageAutoscale } from "@/common/dark-light-image";
 import { DarkLightImageFragment, FooterFragment } from "@/lib/basehub/fragments";
 import { BaseHubImage } from "basehub/next-image";
-import { Link } from "lucide-react";
+import Link from "next/link";
 import { ThemeSwitcher } from "./theme-switcher";
 
 export const Footer = ({
