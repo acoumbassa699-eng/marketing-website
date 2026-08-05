@@ -1,0 +1,13 @@
+{
+  "name": "@optimus/config",
+  "version": "0.1.0",
+  "private": true,
+  "files": [
+    "tsconfig.base.json"
+  ],
+  "scripts": {
+    "build": "echo config ready",
+    "lint": "echo config lint skipped",
+    "typecheck": "echo config typecheck skipped"
+  }
+}
